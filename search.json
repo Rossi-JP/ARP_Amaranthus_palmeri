@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "colophon.html",
+    "href": "colophon.html",
+    "title": "Colophon",
+    "section": "",
+    "text": "R version 4.2.3 (2023-03-15) – “Shortstop Beagle” Version 2023.09.0+463 (2023.09.0+463)\nR studio version 2021.09.0+351 – “Desert Sunflower”"
+  },
+  {
+    "objectID": "carto.html",
+    "href": "carto.html",
+    "title": "Cartographies des occurrences brutes",
+    "section": "",
+    "text": "Note\n\n\n\n\n\n⚠️ Removed 2212 rows containing missing values or values outside the scale range (geom_point())"
+  },
+  {
+    "objectID": "occurrences.html",
+    "href": "occurrences.html",
+    "title": "Occurrences",
+    "section": "",
+    "text": "écrit 02-donnees/00-gbif/01-raw-dl.RData raw dl depuis gbif\nécrit 02-donnees/00-gbif/0091131-240506114902167.zip dl per se\nécrit 0091131-240506114902167.data.Amaranthus palmeri.RData dl utile pour la suite\nécrit 0091131-240506114902167.data.Amaranthus_palmeri.txt (DOI etc)"
+  },
+  {
+    "objectID": "occurrences.html#séquence-dactions-nécessaires-pour-récupérer-toutes-les-infos-et-le-doi",
+    "href": "occurrences.html#séquence-dactions-nécessaires-pour-récupérer-toutes-les-infos-et-le-doi",
+    "title": "Occurrences",
+    "section": "",
+    "text": "écrit 02-donnees/00-gbif/01-raw-dl.RData raw dl depuis gbif\nécrit 02-donnees/00-gbif/0091131-240506114902167.zip dl per se\nécrit 0091131-240506114902167.data.Amaranthus palmeri.RData dl utile pour la suite\nécrit 0091131-240506114902167.data.Amaranthus_palmeri.txt (DOI etc)\n\n\nrm(list=ls()) ; library(rgbif)\nsetwd(\"/Users/rossi/Documents/sauvegarde/analyses_et_articles/ARP-Amaranthus-palmeri/\") \n\n# Obtenir les infos pour le dl  °°°°°°°°°°°°°°°°°°°°°°°°°°°°°\nesp &lt;- \"Amaranthus palmeri\" # Amaranthus palmeri\n# récupération de la taxon key\nkey &lt;- name_backbone(name=esp)$speciesKey ; key # 5384393\n\n#predicate &lt;- pred(\"scientificName\", esp)\npredicate &lt;- pred(\"taxonKey\", value=key) ; predicate\n# &lt;&lt;gbif download - predicate&gt;&gt;\n#   &gt; type: equals, key: TAXON_KEY, value: 5384393\n\nraw &lt;- occ_download(predicate, user=\"jean-pierre.rossi\", pwd=\"rpj..145\", email=\"jean-pierre.rossi@inra.fr\")\nsave(raw, file = \"02-donnees/00-gbif/01-raw-dl.RData\")\n\n# retrouve l'id pour le dl\nraw[1] # Download key\n# \"0091131-240506114902167\" pour Amaranthus palmeri\n\n# dl per se   °°°°°°°°°°°°°°°°°°°°°°°°°°°°°\npath &lt;-  \"/Users/rossi/Documents/sauvegarde/analyses_et_articles/ARP-Amaranthus-palmeri/02-donnees/00-gbif/\"\nraw.dl &lt;- occ_download_get(raw[1], path=path, overwrite=TRUE)\n\n# Download file size: 9.9 MB\n#On disk at /Users/rossi/Documents/sauvegarde/analyses_et_articles/ARP-Amaranthus-palmeri/02-donnees/00-gbif/0091131-240506114902167.zip\n\nraw.dl.import &lt;- occ_download_import(raw.dl)\nraw.dl.import # c'est l'objet qui contient les données qu'on veut. Pas besoin du zip ci-dessous\n\npath &lt;-  \"02-donnees/00-gbif/\"\nfile &lt;- paste(path, raw[1], \".data.\", \"Amaranthus palmeri\", \".RData\", sep=\"\")\nsave(raw.dl.import, file = file)\n\n# Création d’un fichier “frère” avec les détails pour la citation\n# °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°\nlibrary(magrittr) # pour %&gt;%\n\nload(\"02-donnees/00-gbif/0091131-240506114902167.data.Amaranthus palmeri.RData\") # raw.dl.import\n\nesp &lt;- \"Amaranthus palmeri\"\nesp2 &lt;- gsub(pattern=\" \", replacement=\"_\", x=esp)\n\nstr(raw.dl.import, max.levels=1)\nnames(raw.dl.import)[1:25]\ndim(raw.dl.import)\n\n# fichier frère avec détail de la citation\nfichier_frere &lt;- \"02-donnees/00-gbif/0091131-240506114902167.data.Amaranthus_palmeri.txt\"\n\n# get citation gbif_citation(raw.dl)\n# écrit fichier frere\nsink(fichier_frere)\nesp2\nas.Date(Sys.time()) \nocc_download_meta(raw[1]) %&gt;% gbif_citation() # !!!!!!!!\nsink()"
+  },
+  {
+    "objectID": "occurrences.html#séquence-pour-récupérer-toutes-les-infos-et-le-doi",
+    "href": "occurrences.html#séquence-pour-récupérer-toutes-les-infos-et-le-doi",
+    "title": "Occurrences",
+    "section": "",
+    "text": "écrit 02-donnees/00-gbif/01-raw-dl.RData raw dl depuis gbif\nécrit 02-donnees/00-gbif/0091131-240506114902167.zip dl per se\nécrit 0091131-240506114902167.data.Amaranthus palmeri.RData dl utile pour la suite\nécrit 0091131-240506114902167.data.Amaranthus_palmeri.txt (DOI etc)"
+  }
+]
