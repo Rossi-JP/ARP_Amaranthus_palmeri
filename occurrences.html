@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ARP Amaranthus palmeri - Occurrences</title>
+<title>ARP Amaranthus palmeri - Occurrences Amaranthus palmeri</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,6 +61,16 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.28/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -111,6 +121,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Références</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./colophon.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Colophon</strong></span></a>
   </div>
@@ -125,9 +141,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ok-gbif-récupération-sauvegarde-nettoyage" id="toc-ok-gbif-récupération-sauvegarde-nettoyage" class="nav-link active" data-scroll-target="#ok-gbif-récupération-sauvegarde-nettoyage"><span class="header-section-number">1</span> (ok) GBIF : Récupération, sauvegarde, nettoyage</a>
+  <li><a href="#données-doccurrence-en-europe-lien-communiqué-par-arnaud-monty-université-de-gembloux" id="toc-données-doccurrence-en-europe-lien-communiqué-par-arnaud-monty-université-de-gembloux" class="nav-link active" data-scroll-target="#données-doccurrence-en-europe-lien-communiqué-par-arnaud-monty-université-de-gembloux"><span class="header-section-number">1</span> Données d’occurrence en Europe (lien communiqué par Arnaud Monty, Université de Gembloux)</a></li>
+  <li><a href="#données-provenant-de-gbif" id="toc-données-provenant-de-gbif" class="nav-link" data-scroll-target="#données-provenant-de-gbif"><span class="header-section-number">2</span> Données provenant de GBIF</a></li>
+  <li><a href="#examen-des-données-gbif" id="toc-examen-des-données-gbif" class="nav-link" data-scroll-target="#examen-des-données-gbif"><span class="header-section-number">3</span> Examen des données GBIF</a>
   <ul>
-  <li><a href="#séquence-pour-récupérer-toutes-les-infos-et-le-doi" id="toc-séquence-pour-récupérer-toutes-les-infos-et-le-doi" class="nav-link" data-scroll-target="#séquence-pour-récupérer-toutes-les-infos-et-le-doi"><span class="header-section-number">1.1</span> Séquence pour récupérer toutes les infos et le DOI</a></li>
+  <li><a href="#liste-des-issues" id="toc-liste-des-issues" class="nav-link" data-scroll-target="#liste-des-issues"><span class="header-section-number">3.1</span> Liste des “issues”</a></li>
+  <li><a href="#détail-des-issues" id="toc-détail-des-issues" class="nav-link" data-scroll-target="#détail-des-issues"><span class="header-section-number">3.2</span> Détail des “issues”</a></li>
+  <li><a href="#bilan-et-construction-du-jeu-de-données-final" id="toc-bilan-et-construction-du-jeu-de-données-final" class="nav-link" data-scroll-target="#bilan-et-construction-du-jeu-de-données-final"><span class="header-section-number">3.3</span> Bilan et construction du jeu de données final</a></li>
+  <li><a href="#distribution-des-dates-dobservation" id="toc-distribution-des-dates-dobservation" class="nav-link" data-scroll-target="#distribution-des-dates-dobservation"><span class="header-section-number">3.4</span> Distribution des dates d’observation</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -137,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Occurrences</h1>
+<h1 class="title">Occurrences <em>Amaranthus palmeri</em></h1>
 </div>
 
 
@@ -152,17 +173,167 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="ok-gbif-récupération-sauvegarde-nettoyage" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> (ok) GBIF : Récupération, sauvegarde, nettoyage</h1>
-<!-- -   [https://cran.r-project.org/web/packages/rgbif/vignettes/downloads.html](https://cran.r-project.org/web/packages/rgbif/vignettes/downloads.html){target="_blank"} -->
-<section id="séquence-pour-récupérer-toutes-les-infos-et-le-doi" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="séquence-pour-récupérer-toutes-les-infos-et-le-doi"><span class="header-section-number">1.1</span> Séquence pour récupérer toutes les infos et le DOI</h2>
+<section id="données-doccurrence-en-europe-lien-communiqué-par-arnaud-monty-université-de-gembloux" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Données d’occurrence en Europe (lien communiqué par Arnaud Monty, Université de Gembloux)</h1>
 <ul>
-<li>écrit <strong>02-donnees/00-gbif/01-raw-dl.RData</strong> raw dl depuis gbif</li>
-<li>écrit <strong>02-donnees/00-gbif/0091131-240506114902167.zip</strong> dl per se</li>
-<li>écrit <strong>0091131-240506114902167.data.Amaranthus palmeri.RData</strong> dl utile pour la suite</li>
-<li>écrit <strong>0091131-240506114902167.data.Amaranthus_palmeri.txt</strong> (DOI etc)</li>
+<li>Belgique
+<ul>
+<li><a href="https://observations.be/species/6421/observations/?date_after=1950-01-01&amp;date_before=2024-07-02&amp;page=1" target="“_blank”">https://observations.be/species/6421/observations/?date_after=1950-01-01&amp;date_before=2024-07-02&amp;page=1</a></li>
+</ul></li>
+<li>Pays-bas
+<ul>
+<li><a href="https://waarneming.nl/species/6421/maps/?start_date=1990-07-04&amp;interval=157680000&amp;end_date=2024-07-02&amp;map_type=grid1k" target="“_blank”">https://waarneming.nl/species/6421/maps/?start_date=1990-07-04&amp;interval=157680000&amp;end_date=2024-07-02&amp;map_type=grid1k</a></li>
+</ul></li>
 </ul>
+<div class="alert alert-danger">
+<p><strong>⚠️</strong> Questions</p>
+<ul>
+<li>Pas d’accès direct au coordonnées (paquets de points)</li>
+<li>Il faut savoir si les coordonnées sont celles du centre de la cellule ou celle du point</li>
+</ul>
+</div>
+</section>
+<section id="données-provenant-de-gbif" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Données provenant de GBIF</h1>
+<ul>
+<li>date : “2024-06-24”</li>
+<li>name : “Amaranthus_palmeri”</li>
+<li>key : 5384393</li>
+<li>download key : “0091131-240506114902167”</li>
+<li>download file size : 9.9 MB</li>
+<li>DOI : https://doi.org/10.15468/dl.raxjbu</li>
+</ul>
+<div class="alert alert-danger">
+<p><strong>⚠️</strong> Remarques</p>
+<ul>
+<li>Il faut trier les données issues de GBIF pour éliminer les points associés à une incertitude jugée incompatible avec les analyses envisagées dans l’ARP</li>
+</ul>
+</div>
+<!-- -   [https://cran.r-project.org/web/packages/rgbif/vignettes/downloads.html](https://cran.r-project.org/web/packages/rgbif/vignettes/downloads.html){target="_blank"} -->
+<!-- ## Séquence  pour récupérer toutes les infos et le DOI -->
+<!-- -   écrit **02-donnees/00-gbif/01-raw-dl.RData** raw dl depuis gbif  -->
+<!-- -   écrit **02-donnees/00-gbif/0091131-240506114902167.zip** dl per se  -->
+<!-- -   écrit **0091131-240506114902167.data.Amaranthus palmeri.RData** dl utile pour la suite -->
+<!-- -   écrit **0091131-240506114902167.data.Amaranthus_palmeri.txt** (DOI etc) -->
+</section>
+<section id="examen-des-données-gbif" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Examen des données GBIF</h1>
+<ul>
+<li>Sur les 5926 points, 225 ne sont pas associés à au moins 1 issue</li>
+<li>Il y a 41 “issues” différentes</li>
+</ul>
+<section id="liste-des-issues" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="liste-des-issues"><span class="header-section-number">3.1</span> Liste des “issues”</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-74174eab5ff60ddcc74d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-74174eab5ff60ddcc74d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41"],["AMBIGUOUS_COLLECTION","AMBIGUOUS_INSTITUTION","BASIS_OF_RECORD_INVALID","COLLECTION_MATCH_FUZZY","COLLECTION_MATCH_NONE","CONTINENT_COORDINATE_MISMATCH","CONTINENT_DERIVED_FROM_COORDINATES","CONTINENT_DERIVED_FROM_COUNTRY","COORDINATE_INVALID","COORDINATE_PRECISION_INVALID","COORDINATE_REPROJECTED","COORDINATE_ROUNDED","COORDINATE_UNCERTAINTY_METERS_INVALID","COUNTRY_COORDINATE_MISMATCH","COUNTRY_DERIVED_FROM_COORDINATES","COUNTRY_INVALID","COUNTRY_MISMATCH","DIFFERENT_OWNER_INSTITUTION","ELEVATION_MIN_MAX_SWAPPED","GEODETIC_DATUM_ASSUMED_WGS84","GEODETIC_DATUM_INVALID","IDENTIFIED_DATE_INVALID","INDIVIDUAL_COUNT_INVALID","INSTITUTION_COLLECTION_MISMATCH","INSTITUTION_MATCH_FUZZY","INSTITUTION_MATCH_NONE","MODIFIED_DATE_INVALID","MODIFIED_DATE_UNLIKELY","OCCURRENCE_STATUS_INFERRED_FROM_BASIS_OF_RECORD","OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","PRESUMED_NEGATED_LONGITUDE","RECORDED_DATE_INVALID","RECORDED_DATE_MISMATCH","REFERENCES_URI_INVALID","TAXON_MATCH_FUZZY","TAXON_MATCH_HIGHERRANK","TAXON_MATCH_SCIENTIFIC_NAME_ID_IGNORED","TAXON_MATCH_TAXON_CONCEPT_ID_IGNORED","TAXON_MATCH_TAXON_ID_IGNORED","TYPE_STATUS_INVALID","ZERO_COORDINATE"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>x<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":41,"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,25,41,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="détail-des-issues" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="détail-des-issues"><span class="header-section-number">3.2</span> Détail des “issues”</h2>
+<ul>
+<li>BASIS_OF_RECORD_INVALID
+<ul>
+<li>problème avec le champ basisOfRecord</li>
+</ul></li>
+<li>COORDINATE_INVALID
+<ul>
+<li>pas de coordonnée</li>
+</ul></li>
+<li>IDENTIFIED_DATE_INVALID
+<ul>
+<li>date de l’identification au mauvais format ou manquante</li>
+</ul></li>
+<li>INDIVIDUAL_COUNT_INVALID
+<ul>
+<li>Individual count value not parsable into a positive integer</li>
+</ul></li>
+<li>MODIFIED_DATE_INVALID
+<ul>
+<li>A (partial) invalid modified date is given</li>
+</ul></li>
+<li>MODIFIED_DATE_UNLIKELY
+<ul>
+<li>The modified date given is in the future or predates unix time (1970).</li>
+</ul></li>
+<li>OCCURRENCE_STATUS_INFERRED_FROM_BASIS_OF_RECORD
+<ul>
+<li>The occurrence status of preserved specimens (museum specimens) is assumed to be “present” (not absent). With other records occurrence status is usually inferred from from dwc:individualCount</li>
+</ul></li>
+<li>PRESUMED_NEGATED_LONGITUDE
+<ul>
+<li>GBIF a mis les longitudes en négatif pour retrouver le pays d’observation (problème classique; valeur corrigées par gbif)</li>
+</ul></li>
+<li>RECORDED_DATE_INVALID
+<ul>
+<li>12 points avant 1970 dont 2 NA</li>
+</ul></li>
+<li>REFERENCES_URI_INVALID
+<ul>
+<li>url des références invalide (pas important !)</li>
+</ul></li>
+<li>TYPE_STATUS_INVALID
+<ul>
+<li>The given type status is impossible to interpret or very different from the recommended vocabulary: https://rs.gbif.org/vocabulary/gbif/type_status.xml. <strong>780 points avec ““</strong></li>
+</ul></li>
+<li>ZERO_COORDINATE
+<ul>
+<li>Problème car lon et lat = 0. Coordonnées non valides.</li>
+</ul></li>
+</ul>
+</section>
+<section id="bilan-et-construction-du-jeu-de-données-final" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="bilan-et-construction-du-jeu-de-données-final"><span class="header-section-number">3.3</span> Bilan et construction du jeu de données final</h2>
+<p>On garde :</p>
+<ul>
+<li>BASIS_OF_RECORD
+<ul>
+<li>HUMAN_OBSERVATION n=1514</li>
+<li>PRESERVED_SPECIMEN n=4216</li>
+</ul></li>
+</ul>
+<p><strong>On élimine</strong> : - COORDINATE_INVALID</p>
+<p>On garde :</p>
+<ul>
+<li>IDENTIFIED_DATE_INVALID car le pb est simplement que ces dates ne sont pas indiquées</li>
+<li>MODIFIED_DATE_INVALID car le pb est simplement que ces dates ne sont pas indiquées</li>
+<li>MODIFIED_DATE_UNLIKELY : 3 points concernés, et leur date d’observations sont ok</li>
+<li>OCCURRENCE_STATUS_INFERRED_FROM_BASIS_OF_RECORD : la présence est déduite des enregistrements. <em>A priori</em> pas un problème</li>
+<li>PRESUMED_NEGATED_LONGITUDE : gbif inverse le signe de longitude pour corriger et faire correspondre les coord et le pays de signalement</li>
+<li>RECORDED_DATE_INVALID quelques dates codées en NAs à éliminer directement</li>
+<li>REFERENCES_URI_INVALID : l’absence d’url n’est pas un problème pour nous</li>
+<li>TYPE_STATUS_INVALID les infos sur le type ne sont pas bien codées ou manquante. Pas un problème pour nous.</li>
+</ul>
+<p><strong>On élimine</strong> :</p>
+<ul>
+<li>ZERO_COORDINATE : erreur manifeste dans les coordonnées</li>
+</ul>
+<div class="alert alert-danger">
+<p><strong>⚠️</strong> Bilan</p>
+<ul>
+<li>Données GBIF initiales n=5926</li>
+<li>filtre “basis of records” n=5730</li>
+<li>filtre “coordinates invalid” n=5693</li>
+<li>filtre “zero coordinates” n=5685</li>
+<li>filtre “date == NA” n=4991</li>
+<li>filtre “lon ou lat == NA” n=3522</li>
+</ul>
+</div>
+</section>
+<section id="distribution-des-dates-dobservation" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="distribution-des-dates-dobservation"><span class="header-section-number">3.4</span> Distribution des dates d’observation</h2>
+<!-- ![Description de l'image](im/im001.png) -->
+<center>
+<figure style="text-align: center;" class="figure">
+<img src="im/im001.png" alt="" width="500px" class="figure-img">
+<figcaption class="figure-caption">
+Dates d’observations des occurrences GBIF retenues
+</figcaption>
+</figure>
+</center>
 
 
 </section>
